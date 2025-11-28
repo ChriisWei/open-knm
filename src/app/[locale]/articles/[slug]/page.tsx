@@ -1,13 +1,55 @@
+import { Metadata } from "next";
 import { Locale } from "@/lib/uiTexts";
 import { getArticleBySlug } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-export default async function ArticlePage({ 
-  params 
-}: { 
-  params: Promise<{ locale: Locale; slug: string }> 
-}) {
+type Props = {
+  params: Promise<{ locale: Locale; slug: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
+    return {
+      title: 'Not Found',
+    };
+  }
+
+  const title = article.titles[locale];
+  const description = article.descriptions[locale];
+
+  return {
+    title: `${title} | Open KNM`,
+    description: description,
+    openGraph: {
+      title: title,
+      description: description,
+      type: 'article',
+      publishedTime: new Date().toISOString(), // In a real app, this would come from the article data
+      authors: ['Open KNM Team'],
+      tags: article.tags,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+    },
+    alternates: {
+      canonical: `/${locale}/articles/${slug}`,
+      languages: {
+        'en': `/en/articles/${slug}`,
+        'zh': `/zh/articles/${slug}`,
+      },
+    },
+  };
+}
+
+export default async function ArticlePage({ params }: Props) {
   const { locale, slug } = await params;
   const article = getArticleBySlug(slug);
 

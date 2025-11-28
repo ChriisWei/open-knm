@@ -29,7 +29,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       life: "生活实用",
       knm: "KNM 专区",
       resources: "资源",
-      about: "关于项目",
+      about: "关于与贡献",
     },
     footer: {
       tagline: "© open-knm，欢迎开源共享。",
@@ -42,7 +42,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       life: "Daily Life",
       knm: "KNM Zone",
       resources: "Resources",
-      about: "About",
+      about: "About & Contribute",
     },
     footer: {
       tagline: "© open-knm — open knowledge for expats.",
@@ -62,4 +62,3 @@ export function getLocalizedPath(locale: Locale, path = "/") {
   const normalized = normalizePath(path);
   return normalized ? `/${locale}${normalized}` : `/${locale}`;
 }
-

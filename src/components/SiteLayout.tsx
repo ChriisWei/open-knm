@@ -51,6 +51,12 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
               >
                 {texts.nav.resources}
               </Link>
+              <Link
+                href={getLocalizedPath(locale, "/about")}
+                className="hover:text-[var(--primary)] transition-colors font-bold text-[var(--primary)] opacity-90"
+              >
+                {texts.nav.about}
+              </Link>
             </nav>
             <div className="pl-2 border-l border-slate-200">
               <LanguageSwitcher currentLocale={locale} />
