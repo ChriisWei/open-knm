@@ -19,6 +19,16 @@ import KnmHealthZh from "@/data/articles/knm-health-huisarts.zh.mdx";
 import KnmHealthEn from "@/data/articles/knm-health-huisarts.en.mdx";
 import KnmWorkZh from "@/data/articles/knm-work-contracts.zh.mdx";
 import KnmWorkEn from "@/data/articles/knm-work-contracts.en.mdx";
+import KnmWelfareZh from "@/data/articles/knm-social-welfare-allowances.zh.mdx";
+import KnmWelfareEn from "@/data/articles/knm-social-welfare-allowances.en.mdx";
+import KnmHousingZh from "@/data/articles/knm-housing-household.zh.mdx";
+import KnmHousingEn from "@/data/articles/knm-housing-household.en.mdx";
+import KnmEnvZh from "@/data/articles/knm-environment-waste.zh.mdx";
+import KnmEnvEn from "@/data/articles/knm-environment-waste.en.mdx";
+import KnmHealthMatZh from "@/data/articles/knm-healthcare-maternity.zh.mdx";
+import KnmHealthMatEn from "@/data/articles/knm-healthcare-maternity.en.mdx";
+import KnmSocialZh from "@/data/articles/knm-social-etiquette.zh.mdx";
+import KnmSocialEn from "@/data/articles/knm-social-etiquette.en.mdx";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -52,6 +62,26 @@ const articleBodies: Record<string, Partial<Record<Locale, ComponentType>>> = {
   "knm-work-contracts": {
     zh: KnmWorkZh,
     en: KnmWorkEn,
+  },
+  "knm-social-welfare-allowances": {
+    zh: KnmWelfareZh,
+    en: KnmWelfareEn,
+  },
+  "knm-housing-household": {
+    zh: KnmHousingZh,
+    en: KnmHousingEn,
+  },
+  "knm-environment-waste": {
+    zh: KnmEnvZh,
+    en: KnmEnvEn,
+  },
+  "knm-healthcare-maternity": {
+    zh: KnmHealthMatZh,
+    en: KnmHealthMatEn,
+  },
+  "knm-social-etiquette": {
+    zh: KnmSocialZh,
+    en: KnmSocialEn,
   },
 };
 

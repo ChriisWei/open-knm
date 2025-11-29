@@ -98,6 +98,19 @@ export const articles: Article[] = [
     ),
     tags: ["Health"],
   },
+  {
+    slug: "knm-healthcare-maternity",
+    category: "knm",
+    titles: titleFor(
+      "母婴健康：助产士与产后护理",
+      "Healthcare: Midwifery & Maternity Care"
+    ),
+    descriptions: descFor(
+      "怀孕了找谁？助产士（Verloskundige）与产后护理（Kraamzorg）的作用。",
+      "Who to see when pregnant? The role of midwives and maternity care."
+    ),
+    tags: ["Health"],
+  },
 
   // --- KNM: Work & Income ---
   {
@@ -112,6 +125,62 @@ export const articles: Article[] = [
       "Permanent vs temporary contracts, and basic dismissal protection."
     ),
     tags: ["Work"],
+  },
+  {
+    slug: "knm-social-welfare-allowances",
+    category: "knm",
+    titles: titleFor(
+      "社会福利：津贴与失业救济",
+      "Welfare: Allowances & Benefits"
+    ),
+    descriptions: descFor(
+      "了解失业金（WW）、救济金（Bijstand）以及房租和医疗津贴（Toeslagen）。",
+      "Understanding unemployment benefits, social assistance, and rent/healthcare allowances."
+    ),
+    tags: ["Work", "Finance"],
+  },
+
+  // --- KNM: Housing & Environment ---
+  {
+    slug: "knm-housing-household",
+    category: "knm",
+    titles: titleFor(
+      "住房管理：租房、买房与税务",
+      "Housing: Renting, Buying & Taxes"
+    ),
+    descriptions: descFor(
+      "社会房与私人租房的区别，房产税（OZB）与必选保险。",
+      "Social vs private housing, property tax (OZB), and mandatory insurances."
+    ),
+    tags: ["Housing", "Finance"],
+  },
+  {
+    slug: "knm-environment-waste",
+    category: "knm",
+    titles: titleFor(
+      "环境规则：垃圾分类与罚款",
+      "Environment: Waste Separation & Fines"
+    ),
+    descriptions: descFor(
+      "GFT、化学垃圾怎么扔？丢错垃圾会有什么后果？",
+      "How to separate GFT and chemical waste? Consequences of wrong disposal."
+    ),
+    tags: ["Environment"],
+  },
+
+  // --- KNM: Culture & Daily Life ---
+  {
+    slug: "knm-social-etiquette",
+    category: "knm",
+    titles: titleFor(
+      "社交礼仪：拜访与冲突解决",
+      "Etiquette: Visiting & Conflict Resolution"
+    ),
+    descriptions: descFor(
+      "荷兰人的三吻礼、预约文化，以及邻里冲突的解决步骤。",
+      "Three kisses, appointments, and solving neighbor disputes."
+    ),
+    tags: ["Culture"],
   },
 
   // --- Society (Broader Context) ---

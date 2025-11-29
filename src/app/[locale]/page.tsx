@@ -134,6 +134,25 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                   <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
                 </div>
              </Link>
+
+             {/* Card 4: Work & Income */}
+             <Link
+               href={`/${locale}/knm?topic=work-income`}
+               className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+             >
+                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">💼</div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-slate-900 truncate">
+                    {isZh ? '工作与收入' : 'Work & Income'}
+                  </h3>
+                  <p className="text-slate-500 text-sm truncate">
+                    {isZh ? '合同、解雇保护、福利与税务。' : 'Contracts, dismissal, benefits & taxes.'}
+                  </p>
+                </div>
+                <div className="ml-3">
+                  <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
+                </div>
+             </Link>
           </div>
         </section>
       </div>

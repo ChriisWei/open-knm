@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { Locale, getLocalizedPath, uiTexts } from "../lib/uiTexts";
@@ -15,6 +16,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
   const texts = uiTexts[locale];
   const year = new Date().getFullYear();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navLinks = [
     { href: getLocalizedPath(locale, "/knm"), label: texts.nav.knm },
@@ -45,20 +47,27 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
           <div className="flex items-center gap-3 md:gap-6">
             {/* Desktop nav */}
             <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex md:text-base">
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={[
-                    "transition-colors",
-                    item.isAccent
-                      ? "font-semibold text-[var(--primary)] hover:text-[var(--primary)]"
-                      : "hover:text-[var(--primary)]",
-                  ].join(" ")}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {navLinks.map((item) => {
+                const isActive = pathname?.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={[
+                      "transition-colors border-b-2 border-transparent pb-1",
+                      item.isAccent
+                        ? "font-semibold text-[var(--primary)] hover:text-[var(--primary)]"
+                        : "hover:text-[var(--primary)]",
+                      isActive
+                        ? "text-[var(--primary)] border-[var(--primary)] font-semibold"
+                        : "text-slate-600",
+                    ].join(" ")}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             <div className="hidden md:block h-6 w-[1px] bg-slate-200"></div>
@@ -122,25 +131,33 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                  <span>→</span>
               </Link>
               
-              {navLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex items-center justify-between rounded-lg px-2 py-1.5 hover:bg-slate-50"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <span
-                    className={
-                      item.isAccent
-                        ? "font-semibold text-[var(--primary)]"
-                        : undefined
-                    }
+              {navLinks.map((item) => {
+                const isActive = pathname?.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={[
+                      "flex items-center justify-between rounded-lg px-2 py-1.5",
+                      isActive
+                        ? "bg-slate-100 text-slate-900 font-semibold"
+                        : "hover:bg-slate-50 text-slate-700",
+                    ].join(" ")}
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {item.label}
-                  </span>
-                  <span className="text-slate-300">→</span>
-                </Link>
-              ))}
+                    <span
+                      className={
+                        item.isAccent
+                          ? "font-semibold text-[var(--primary)]"
+                          : undefined
+                      }
+                    >
+                      {item.label}
+                    </span>
+                    <span className="text-slate-300">→</span>
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         )}
