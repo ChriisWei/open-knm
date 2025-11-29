@@ -1,107 +1,100 @@
-<div className="space-y-8">
-  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
-    <p className="font-medium">
-      本篇介绍荷兰独特的生育护理体系：<strong>助产士 (Verloskundige)</strong>、<strong>在家分娩 (Thuisbevalling)</strong> 以及 <strong>产后护理 (Kraamzorg)</strong>。
+import { ArticleSummary, BilingualGrid, DutchColumn, ChineseColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary icon="🍼">
+  本篇介绍荷兰独特的生育护理体系：**助产士 (Verloskundige)**、**在家分娩 (Thuisbevalling)** 以及 **产后护理 (Kraamzorg)**。
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Zwangerschap en de Verloskundige">
+    <p>
+      Als een vrouw **zwanger** is, gaat zij meestal naar een **verloskundige**.
     </p>
-  </div>
+    <p>
+      De **verloskundige** helpt met de controles en geeft advies. Zij controleert de moeder en de baby.
+    </p>
+    <p>
+      Als er medische problemen zijn, stuurt de **verloskundige** de vrouw door naar de **gynaecoloog** in het **ziekenhuis**.
+    </p>
+  </DutchColumn>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {/* 左列：荷兰语原文 (A2 Level) */}
-    <div className="space-y-4">
-      <h2>1. Zwangerschap en de Verloskundige</h2>
-      <p>
-        Als een vrouw <strong>zwanger</strong> is, gaat zij meestal naar een <strong>verloskundige</strong>.
-      </p>
-      <p>
-        De <strong>verloskundige</strong> helpt met de controles en geeft advies. Zij controleert de moeder en de baby.
-      </p>
-      <p>
-        Als er medische problemen zijn, stuurt de <strong>verloskundige</strong> de vrouw door naar de <strong>gynaecoloog</strong> in het <strong>ziekenhuis</strong>.
-      </p>
+  <ChineseColumn title="1. 怀孕与助产士">
+    <p>
+      如果一位女性 **怀孕 (zwanger)** 了，她通常是去看 **助产士 (verloskundige)**，而不是直接去医院找医生。
+    </p>
+    <p>
+      **助产士** 负责产检并提供建议。她会检查母亲和婴儿的健康状况。
+    </p>
+    <p>
+      只有出现医学问题时，助产士才会把孕妇转诊给 **医院** 的 **妇科医生 (gynaecoloog)**。
+    </p>
+  </ChineseColumn>
 
-      <h2>2. De Bevalling</h2>
-      <p>
-        In Nederland mag de moeder zelf kiezen waar ze wil bevallen.
-      </p>
-      <p>
-        Als alles goed gaat, kan de bevalling <strong>thuis</strong> plaatsvinden (<strong>thuis bevallen</strong>).
-      </p>
-      <p>
-        Ze kan er ook voor kiezen om <strong>in het ziekenhuis</strong> te bevallen.
-      </p>
+  {/* Section 2 */}
+  <DutchColumn title="2. De Bevalling">
+    <p>
+      In Nederland mag de moeder zelf kiezen waar ze wil bevallen.
+    </p>
+    <p>
+      Als alles goed gaat, kan de bevalling **thuis** plaatsvinden (**thuis bevallen**).
+    </p>
+    <p>
+      Ze kan er ook voor kiezen om **in het ziekenhuis** te bevallen.
+    </p>
+  </DutchColumn>
 
-      <h2>3. Kraamzorg en Consultatiebureau</h2>
-      <p>
-        Na de bevalling krijgt de familie <strong>kraamzorg</strong>. Een <strong>kraamverzorgende</strong> komt ongeveer een week bij u thuis om te helpen met de baby en het huishouden. U moet <strong>kraamzorg</strong> op tijd aanvragen.
-      </p>
-      <p>
-        Ouders moeten met hun kind naar het <strong>Consultatiebureau</strong> (CB) gaan.
-      </p>
-      <p>
-        De artsen controleren daar de groei en ontwikkeling van het kind (0 tot 4 jaar). Uw kind krijgt op het <strong>Consultatiebureau</strong> ook <strong>vaccinaties</strong> (prikken) tegen ziekten.
-      </p>
-    </div>
+  <ChineseColumn title="2. 分娩">
+    <p>
+      在荷兰，母亲可以自己选择在哪里分娩。
+    </p>
+    <p>
+      如果一切顺利，可以选择 **在家分娩 (thuis bevallen)**。
+    </p>
+    <p>
+      当然，她也可以选择 **在医院分娩 (in het ziekenhuis)**。
+    </p>
+  </ChineseColumn>
 
-    {/* 右列：中文翻译 (Agent Translation) */}
-    <div className="space-y-4">
-      <h2>1. 怀孕与助产士</h2>
-      <p>
-        如果一位女性 <strong>怀孕 (zwanger)</strong> 了，她通常是去看 <strong>助产士 (verloskundige)</strong>，而不是直接去医院找医生。
-      </p>
-      <p>
-        <strong>助产士</strong> 负责产检并提供建议。她会检查母亲和婴儿的健康状况。
-      </p>
-      <p>
-        只有出现医学问题时，助产士才会把孕妇转诊给 <strong>医院</strong> 的 <strong>妇科医生 (gynaecoloog)</strong>。
-      </p>
+  {/* Section 3 */}
+  <DutchColumn title="3. Kraamzorg en Consultatiebureau">
+    <p>
+      Na de bevalling krijgt de familie **kraamzorg**. Een **kraamverzorgende** komt ongeveer een week bij u thuis om te helpen met de baby en het huishouden. U moet **kraamzorg** op tijd aanvragen.
+    </p>
+    <p>
+      Ouders moeten met hun kind naar het **Consultatiebureau** (CB) gaan.
+    </p>
+    <p>
+      De artsen controleren daar de groei en ontwikkeling van het kind (0 tot 4 jaar). Uw kind krijgt op het **Consultatiebureau** ook **vaccinaties** (prikken) tegen ziekten.
+    </p>
+  </DutchColumn>
 
-      <h2>2. 分娩</h2>
-      <p>
-        在荷兰，母亲可以自己选择在哪里分娩。
-      </p>
-      <p>
-        如果一切顺利，可以选择 <strong>在家分娩 (thuis bevallen)</strong>。
-      </p>
-      <p>
-        当然，她也可以选择 <strong>在医院分娩 (in het ziekenhuis)</strong>。
-      </p>
+  <ChineseColumn title="3. 产后护理与保健中心">
+    <p>
+      分娩后，家庭会获得 **产后护理 (kraamzorg)** 服务。一位 **产后护理员 (kraamverzorgende)** 会来您家，在大约一周的时间里帮忙照顾婴儿和做家务。您必须尽早申请 **kraamzorg**。
+    </p>
+    <p>
+      之后，父母必须带孩子去 **儿童保健中心 (Consultatiebureau / CB)**。
+    </p>
+    <p>
+      那里的医生会监测孩子（0到4岁）的生长和发育。您的孩子也会在 **Consultatiebureau** 接种预防疾病的 **疫苗 (vaccinaties)**。
+    </p>
+  </ChineseColumn>
+</BilingualGrid>
 
-      <h2>3. 产后护理与保健中心</h2>
-      <p>
-        分娩后，家庭会获得 <strong>产后护理 (kraamzorg)</strong> 服务。一位 <strong>产后护理员 (kraamverzorgende)</strong> 会来您家，在大约一周的时间里帮忙照顾婴儿和做家务。您必须尽早申请 <strong>kraamzorg</strong>。
-      </p>
-      <p>
-        之后，父母必须带孩子去 <strong>儿童保健中心 (Consultatiebureau / CB)</strong>。
-      </p>
-      <p>
-        那里的医生会监测孩子（0到4岁）的生长和发育。您的孩子也会在 <strong>Consultatiebureau</strong> 接种预防疾病的 <strong>疫苗 (vaccinaties)</strong>。
-      </p>
-    </div>
-  </div>
-
-  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
-    <h3 className="font-semibold text-slate-700">延伸阅读 · 官方来源</h3>
-    <ul className="list-disc list-inside space-y-1">
-      <li>
-        <a
-          href="https://www.opvoeden.nl/baby/kraamtijd/kraamzorg/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Opvoeden.nl: Kraamzorg (关于产后护理)
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.rijksvaccinatieprogramma.nl/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Rijksvaccinatieprogramma (国家疫苗接种计划)
-        </a>
-      </li>
-    </ul>
-  </div>
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> 延伸阅读 · 官方来源
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://www.opvoeden.nl/baby/kraamtijd/kraamzorg/">
+        Opvoeden.nl: Kraamzorg (关于产后护理)
+      </SourceLink>
+    </li>
+    <li>
+      <SourceLink href="https://www.rijksvaccinatieprogramma.nl/">
+        Rijksvaccinatieprogramma (国家疫苗接种计划)
+      </SourceLink>
+    </li>
+  </ul>
 </div>

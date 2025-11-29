@@ -1,107 +1,100 @@
-<div className="space-y-8">
-  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
-    <p className="font-medium">
-      This article explains the unique Dutch maternity care system: <strong>midwives (Verloskundige)</strong>, <strong>home births (Thuisbevalling)</strong>, and <strong>postpartum care (Kraamzorg)</strong>.
+import { ArticleSummary, BilingualGrid, DutchColumn, EnglishColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary title="Article Summary" icon="🍼">
+  This article explains the unique Dutch maternity care system: **midwives (Verloskundige)**, **home births (Thuisbevalling)**, and **postpartum care (Kraamzorg)**.
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Zwangerschap en de Verloskundige">
+    <p>
+      Als een vrouw **zwanger** is, gaat zij meestal naar een **verloskundige**.
     </p>
-  </div>
+    <p>
+      De **verloskundige** helpt met de controles en geeft advies. Zij controleert de moeder en de baby.
+    </p>
+    <p>
+      Als er medische problemen zijn, stuurt de **verloskundige** de vrouw door naar de **gynaecoloog** in het **ziekenhuis**.
+    </p>
+  </DutchColumn>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {/* Left: Dutch (A2 Level) */}
-    <div className="space-y-4">
-      <h2>1. Zwangerschap en de Verloskundige</h2>
-      <p>
-        Als een vrouw <strong>zwanger</strong> is, gaat zij meestal naar een <strong>verloskundige</strong>.
-      </p>
-      <p>
-        De <strong>verloskundige</strong> helpt met de controles en geeft advies. Zij controleert de moeder en de baby.
-      </p>
-      <p>
-        Als er medische problemen zijn, stuurt de <strong>verloskundige</strong> de vrouw door naar de <strong>gynaecoloog</strong> in het <strong>ziekenhuis</strong>.
-      </p>
+  <EnglishColumn title="1. Pregnancy and the Midwife">
+    <p>
+      When a woman is **pregnant (zwanger)**, she usually goes to a **midwife (verloskundige)**.
+    </p>
+    <p>
+      The **midwife** helps with check-ups and gives advice. She monitors the mother and the baby.
+    </p>
+    <p>
+      Only if there are medical problems does the **midwife** refer the woman to a **gynecologist (gynaecoloog)** in the **hospital (ziekenhuis)**.
+    </p>
+  </EnglishColumn>
 
-      <h2>2. De Bevalling</h2>
-      <p>
-        In Nederland mag de moeder zelf kiezen waar ze wil bevallen.
-      </p>
-      <p>
-        Als alles goed gaat, kan de bevalling <strong>thuis</strong> plaatsvinden (<strong>thuis bevallen</strong>).
-      </p>
-      <p>
-        Ze kan er ook voor kiezen om <strong>in het ziekenhuis</strong> te bevallen.
-      </p>
+  {/* Section 2 */}
+  <DutchColumn title="2. De Bevalling">
+    <p>
+      In Nederland mag de moeder zelf kiezen waar ze wil bevallen.
+    </p>
+    <p>
+      Als alles goed gaat, kan de bevalling **thuis** plaatsvinden (**thuis bevallen**).
+    </p>
+    <p>
+      Ze kan er ook voor kiezen om **in het ziekenhuis** te bevallen.
+    </p>
+  </DutchColumn>
 
-      <h2>3. Kraamzorg en Consultatiebureau</h2>
-      <p>
-        Na de bevalling krijgt de familie <strong>kraamzorg</strong>. Een <strong>kraamverzorgende</strong> komt ongeveer een week bij u thuis om te helpen met de baby en het huishouden. U moet <strong>kraamzorg</strong> op tijd aanvragen.
-      </p>
-      <p>
-        Ouders moeten met hun kind naar het <strong>Consultatiebureau</strong> (CB) gaan.
-      </p>
-      <p>
-        De artsen controleren daar de groei en ontwikkeling van het kind (0 tot 4 jaar). Uw kind krijgt op het <strong>Consultatiebureau</strong> ook <strong>vaccinaties</strong> (prikken) tegen ziekten.
-      </p>
-    </div>
+  <EnglishColumn title="2. Giving Birth">
+    <p>
+      In the Netherlands, the mother can choose where she wants to give birth.
+    </p>
+    <p>
+      If everything goes well, the birth can take place **at home (thuis bevallen)**.
+    </p>
+    <p>
+      She can also choose to give birth **in the hospital**.
+    </p>
+  </EnglishColumn>
 
-    {/* Right: English Translation (Agent Translation) */}
-    <div className="space-y-4">
-      <h2>1. Pregnancy and the Midwife</h2>
-      <p>
-        When a woman is <strong>pregnant (zwanger)</strong>, she usually goes to a <strong>midwife (verloskundige)</strong>.
-      </p>
-      <p>
-        The <strong>midwife</strong> helps with check-ups and gives advice. She monitors the mother and the baby.
-      </p>
-      <p>
-        Only if there are medical problems does the <strong>midwife</strong> refer the woman to a <strong>gynecologist (gynaecoloog)</strong> in the <strong>hospital (ziekenhuis)</strong>.
-      </p>
+  {/* Section 3 */}
+  <DutchColumn title="3. Kraamzorg en Consultatiebureau">
+    <p>
+      Na de bevalling krijgt de familie **kraamzorg**. Een **kraamverzorgende** komt ongeveer een week bij u thuis om te helpen met de baby en het huishouden. U moet **kraamzorg** op tijd aanvragen.
+    </p>
+    <p>
+      Ouders moeten met hun kind naar het **Consultatiebureau** (CB) gaan.
+    </p>
+    <p>
+      De artsen controleren daar de groei en ontwikkeling van het kind (0 tot 4 jaar). Uw kind krijgt op het **Consultatiebureau** ook **vaccinaties** (prikken) tegen ziekten.
+    </p>
+  </DutchColumn>
 
-      <h2>2. Giving Birth</h2>
-      <p>
-        In the Netherlands, the mother can choose where she wants to give birth.
-      </p>
-      <p>
-        If everything goes well, the birth can take place <strong>at home (thuis bevallen)</strong>.
-      </p>
-      <p>
-        She can also choose to give birth <strong>in the hospital</strong>.
-      </p>
+  <EnglishColumn title="3. Maternity Care and Child Health Clinic">
+    <p>
+      After the birth, the family receives **maternity care (kraamzorg)**. A **maternity nurse (kraamverzorgende)** comes to your home for about a week to help with the baby and household chores. You must apply for **kraamzorg** on time.
+    </p>
+    <p>
+      Parents must take their child to the **Child Health Clinic (Consultatiebureau / CB)**.
+    </p>
+    <p>
+      Doctors there monitor the child's growth and development (0 to 4 years). Your child also receives **vaccinations (vaccinaties)** against diseases at the **Consultatiebureau**.
+    </p>
+  </EnglishColumn>
+</BilingualGrid>
 
-      <h2>3. Maternity Care and Child Health Clinic</h2>
-      <p>
-        After the birth, the family receives <strong>maternity care (kraamzorg)</strong>. A <strong>maternity nurse (kraamverzorgende)</strong> comes to your home for about a week to help with the baby and household chores. You must apply for <strong>kraamzorg</strong> on time.
-      </p>
-      <p>
-        Parents must take their child to the <strong>Child Health Clinic (Consultatiebureau / CB)</strong>.
-      </p>
-      <p>
-        Doctors there monitor the child's growth and development (0 to 4 years). Your child also receives <strong>vaccinations (vaccinaties)</strong> against diseases at the <strong>Consultatiebureau</strong>.
-      </p>
-    </div>
-  </div>
-
-  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
-    <h3 className="font-semibold text-slate-700">Further reading on Wikipedia</h3>
-    <ul className="list-disc list-inside space-y-1">
-      <li>
-        <a
-          href="https://www.iamexpat.nl/expat-info/family-kids/pregnancy-maternity-care-netherlands"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Pregnancy and maternity care in the Netherlands (IamExpat)
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.government.nl/topics/vaccinations"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Government.nl: Vaccinations
-        </a>
-      </li>
-    </ul>
-  </div>
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> Further Reading
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://www.iamexpat.nl/expat-info/family-kids/pregnancy-maternity-care-netherlands">
+        Pregnancy and maternity care in the Netherlands (IamExpat)
+      </SourceLink>
+    </li>
+    <li>
+      <SourceLink href="https://www.government.nl/topics/vaccinations">
+        Government.nl: Vaccinations
+      </SourceLink>
+    </li>
+  </ul>
 </div>

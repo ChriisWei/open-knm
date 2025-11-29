@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
+import { AiDisclaimer } from "./AiDisclaimer";
 import { Locale, getLocalizedPath, uiTexts } from "../lib/uiTexts";
 
 type SiteLayoutProps = {
@@ -162,6 +163,8 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
           </div>
         )}
       </header>
+
+      <AiDisclaimer locale={locale} />
 
       <main className="flex-1 flex flex-col justify-center">
         <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">{children}</div>

@@ -1,102 +1,95 @@
-<div className="space-y-8">
-  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
-    <p className="font-medium">
-      本篇介绍荷兰独特的地理特征：<strong>水与安全 (Water en Veiligheid)</strong>、<strong>围海造田 (Polders)</strong> 以及繁忙的 <strong>兰斯塔德城市圈 (Randstad)</strong>。
+import { ArticleSummary, BilingualGrid, DutchColumn, ChineseColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary icon="🌊">
+  本篇介绍荷兰独特的地理特征：**水与安全 (Water en Veiligheid)**、**围海造田 (Polders)** 以及繁忙的 **兰斯塔德城市圈 (Randstad)**。
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Water en Veiligheid">
+    <p>
+      Nederland is een vlak land. Een groot deel van het land ligt lager dan de zee (**onder de zeespiegel**).
     </p>
-  </div>
+    <p>
+      Daarom moet Nederland zichzelf beschermen. Zonder **dijken** en **duinen** zou een deel van Nederland overstromen.
+    </p>
+    <p>
+      De **dijken** zijn hoog om het land veilig te houden tegen het water. Nederland ligt aan de **Noordzee**.
+    </p>
+  </DutchColumn>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {/* 左列：荷兰语原文 (A2 Level) */}
-    <div className="space-y-4">
-      <h2>1. Water en Veiligheid</h2>
-      <p>
-        Nederland is een vlak land. Een groot deel van het land ligt lager dan de zee (<strong>onder de zeespiegel</strong>).
-      </p>
-      <p>
-        Daarom moet Nederland zichzelf beschermen. Zonder <strong>dijken</strong> en <strong>duinen</strong> zou een deel van Nederland overstromen.
-      </p>
-      <p>
-        De <strong>dijken</strong> zijn hoog om het land veilig te houden tegen het water. Nederland ligt aan de <strong>Noordzee</strong>.
-      </p>
+  <ChineseColumn title="1. 水与安全">
+    <p>
+      荷兰是一个平坦的国家。该国很大一部分土地低于海平面 (**onder de zeespiegel**)。
+    </p>
+    <p>
+      因此，荷兰必须保护自己。如果没有 **堤坝 (dijken)** 和 **沙丘 (duinen)**，荷兰的一部分土地就会被淹没。
+    </p>
+    <p>
+      **堤坝** 建得很高，以保护土地免受水的侵害。荷兰西临 **北海 (Noordzee)**。
+      (注：荷兰使用 **NAP** 作为水位测量的基准)。
+    </p>
+  </ChineseColumn>
 
-      <h2>2. Polders en Waterschap</h2>
-      <p>
-        Nederlanders hebben veel nieuw land gemaakt. Dit land dat vroeger water was, heet <strong>Polders</strong>. Het maken van nieuw land heet <strong>inpolderen</strong>.
-      </p>
-      <p>
-        <strong>Flevoland</strong> is een provincie die gemaakt is van een <strong>Polder</strong>.
-      </p>
-      <p>
-        Het <strong>Waterschap</strong> is een organisatie die het water in Nederland regelt. U betaalt <strong>waterschapsbelasting</strong> om de dijken en het schone water te onderhouden.
-      </p>
+  {/* Section 2 */}
+  <DutchColumn title="2. Polders en Waterschap">
+    <p>
+      Nederlanders hebben veel nieuw land gemaakt. Dit land dat vroeger water was, heet **Polders**. Het maken van nieuw land heet **inpolderen**.
+    </p>
+    <p>
+      **Flevoland** is een provincie die gemaakt is van een **Polder**.
+    </p>
+    <p>
+      Het **Waterschap** is een organisatie die het water in Nederland regelt. U betaalt **waterschapsbelasting** om de dijken en het schone water te onderhouden.
+    </p>
+  </DutchColumn>
 
-      <h2>3. De Randstad</h2>
-      <p>
-        De <strong>Randstad</strong> is het drukke westen van Nederland. De vier grootste steden liggen in de <strong>Randstad</strong>: <strong>Amsterdam</strong>, <strong>Rotterdam</strong>, <strong>Den Haag</strong>, en <strong>Utrecht</strong>.
-      </p>
-      <p>
-        De helft van alle Nederlanders woont en werkt in de <strong>Randstad</strong>. Daar is veel werk. Maar er zijn vaak <strong>files</strong> op de snelwegen.
-      </p>
-    </div>
+  <ChineseColumn title="2. 圩田与水利局">
+    <p>
+      荷兰人制造了许多新土地。这种以前是水域的土地被称为 **圩田 (Polders)**。制造新土地的过程叫 **围海造田 (inpolderen)**。
+    </p>
+    <p>
+      **弗莱福兰省 (Flevoland)** 就是一个完全由 **圩田** 构成的省份。
+    </p>
+    <p>
+      **水利局 (Waterschap)** 是负责管理荷兰水务的组织。您需要缴纳 **水利税 (waterschapsbelasting)**，用于维护堤坝和保持水质清洁。
+    </p>
+  </ChineseColumn>
 
-    {/* 右列：中文翻译 (Agent Translation) */}
-    <div className="space-y-4">
-      <h2>1. 水与安全</h2>
-      <p>
-        荷兰是一个平坦的国家。该国很大一部分土地低于海平面 (<strong>onder de zeespiegel</strong>)。
-      </p>
-      <p>
-        因此，荷兰必须保护自己。如果没有 <strong>堤坝 (dijken)</strong> 和 <strong>沙丘 (duinen)</strong>，荷兰的一部分土地就会被淹没。
-      </p>
-      <p>
-        <strong>堤坝</strong> 建得很高，以保护土地免受水的侵害。荷兰西临 <strong>北海 (Noordzee)</strong>。
-        (注：荷兰使用 <strong>NAP</strong> 作为水位测量的基准)。
-      </p>
+  {/* Section 3 */}
+  <DutchColumn title="3. De Randstad">
+    <p>
+      De **Randstad** is het drukke westen van Nederland. De vier grootste steden liggen in de **Randstad**: **Amsterdam**, **Rotterdam**, **Den Haag**, en **Utrecht**.
+    </p>
+    <p>
+      De helft van alle Nederlanders woont en werkt in de **Randstad**. Daar is veel werk. Maar er zijn vaak **files** op de snelwegen.
+    </p>
+  </DutchColumn>
 
-      <h2>2. 圩田与水利局</h2>
-      <p>
-        荷兰人制造了许多新土地。这种以前是水域的土地被称为 <strong>圩田 (Polders)</strong>。制造新土地的过程叫 <strong>围海造田 (inpolderen)</strong>。
-      </p>
-      <p>
-        <strong>弗莱福兰省 (Flevoland)</strong> 就是一个完全由 <strong>圩田</strong> 构成的省份。
-      </p>
-      <p>
-        <strong>水利局 (Waterschap)</strong> 是负责管理荷兰水务的组织。您需要缴纳 <strong>水利税 (waterschapsbelasting)</strong>，用于维护堤坝和保持水质清洁。
-      </p>
+  <ChineseColumn title="3. 兰斯塔德城市圈">
+    <p>
+      **兰斯塔德 (Randstad)** 是荷兰西部繁忙的城市群。荷兰最大的四个城市都位于此：**阿姆斯特丹**、**鹿特丹**、**海牙** 和 **乌得勒支**。
+    </p>
+    <p>
+      一半的荷兰人在 **Randstad** 生活和工作。这里有很多工作机会。但也正因如此，高速公路上经常出现 **堵车 (files)**。
+    </p>
+  </ChineseColumn>
+</BilingualGrid>
 
-      <h2>3. 兰斯塔德城市圈</h2>
-      <p>
-        <strong>兰斯塔德 (Randstad)</strong> 是荷兰西部繁忙的城市群。荷兰最大的四个城市都位于此：<strong>阿姆斯特丹</strong>、<strong>鹿特丹</strong>、<strong>海牙</strong> 和 <strong>乌得勒支</strong>。
-      </p>
-      <p>
-        一半的荷兰人在 <strong>Randstad</strong> 生活和工作。这里有很多工作机会。但也正因如此，高速公路上经常出现 <strong>堵车 (files)</strong>。
-      </p>
-    </div>
-  </div>
-
-  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
-    <h3 className="font-semibold text-slate-700">延伸阅读 · 官方来源</h3>
-    <ul className="list-disc list-inside space-y-1">
-      <li>
-        <a
-          href="https://en.wikipedia.org/wiki/Flood_control_in_the_Netherlands"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Flood control in the Netherlands – Wikipedia
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.waterschappen.nl/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Unie van Waterschappen (水利局联合会)
-        </a>
-      </li>
-    </ul>
-  </div>
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> 延伸阅读 · 官方来源
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://en.wikipedia.org/wiki/Flood_control_in_the_Netherlands">
+        Flood control in the Netherlands – Wikipedia
+      </SourceLink>
+    </li>
+    <li>
+      <SourceLink href="https://www.waterschappen.nl/">
+        Unie van Waterschappen (水利局联合会)
+      </SourceLink>
+    </li>
+  </ul>
 </div>

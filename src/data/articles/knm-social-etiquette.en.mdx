@@ -1,107 +1,100 @@
-<div className="space-y-8">
-  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
-    <p className="font-medium">
-      This article explains unique Dutch social customs: <strong>making appointments (Afspraak)</strong>, <strong>birthday etiquette (Verjaardag)</strong>, and <strong>birth traditions (Geboorte)</strong>.
+import { ArticleSummary, BilingualGrid, DutchColumn, EnglishColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary title="Article Summary" icon="🤝">
+  This article explains unique Dutch social customs: **making appointments (Afspraak)**, **birthday etiquette (Verjaardag)**, and **birth traditions (Geboorte)**.
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Op Bezoek">
+    <p>
+      Als u bij een Nederlander op bezoek gaat, moet u altijd eerst een **afspraak maken**. U mag niet onaangekondigd komen.
     </p>
-  </div>
+    <p>
+      Het is heel belangrijk om **op tijd te komen**. Als u later komt, moet u bellen.
+    </p>
+    <p>
+      U krijgt meestal koffie of thee met een koekje. Voor een officiële **afspraak** (bijvoorbeeld bij een dokter) moet u ook **op tijd komen**.
+    </p>
+  </DutchColumn>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {/* Left: Dutch (A2 Level) */}
-    <div className="space-y-4">
-      <h2>1. Op Bezoek</h2>
-      <p>
-        Als u bij een Nederlander op bezoek gaat, moet u altijd eerst een <strong>afspraak maken</strong>. U mag niet onaangekondigd komen.
-      </p>
-      <p>
-        Het is heel belangrijk om <strong>op tijd te komen</strong>. Als u later komt, moet u bellen.
-      </p>
-      <p>
-        U krijgt meestal koffie of thee met een koekje. Voor een officiële <strong>afspraak</strong> (bijvoorbeeld bij een dokter) moet u ook <strong>op tijd komen</strong>.
-      </p>
+  <EnglishColumn title="1. Visiting and Appointments">
+    <p>
+      If you visit a Dutch person, you must always **make an appointment (afspraak maken)** first. Do not show up unannounced (niet onaangekondigd).
+    </p>
+    <p>
+      It is very important to **be on time (op tijd komen)**. If you are going to be late, you must call.
+    </p>
+    <p>
+      You usually get coffee or tea with a cookie. For an official **appointment** (e.g., at a doctor), being on time is mandatory.
+    </p>
+  </EnglishColumn>
 
-      <h2>2. Verjaardag</h2>
-      <p>
-        Als iemand jarig is, vieren de Nederlanders dat. U zegt <strong>Gefeliciteerd</strong> tegen de jarige.
-      </p>
-      <p>
-        Bij een verjaardag feliciteert u ook de partner van de jarige. U geeft de jarige een cadeau.
-      </p>
-      <p>
-        Als u jarig bent, moet u zelf <strong>trakteren</strong> op school of op het werk.
-      </p>
+  {/* Section 2 */}
+  <DutchColumn title="2. Verjaardag">
+    <p>
+      Als iemand jarig is, vieren de Nederlanders dat. U zegt **Gefeliciteerd** tegen de jarige.
+    </p>
+    <p>
+      Bij een verjaardag feliciteert u ook de partner van de jarige. U geeft de jarige een cadeau.
+    </p>
+    <p>
+      Als u jarig bent, moet u zelf **trakteren** op school of op het werk.
+    </p>
+  </DutchColumn>
 
-      <h2>3. Geboorte</h2>
-      <p>
-        Als er een baby geboren is, sturen de ouders een <strong>geboortekaartje</strong> naar vrienden en familie.
-      </p>
-      <p>
-        Als u op <strong>kraamvisite</strong> gaat, moet u eerst een <strong>afspraak maken</strong>. Het bezoek blijft meestal niet lang.
-      </p>
-      <p>
-        De traditie is dat bezoekers <strong>beschuit met muisjes</strong> krijgen. De kleur van de <strong>muisjes</strong> is roze of blauw.
-      </p>
-    </div>
+  <EnglishColumn title="2. Birthdays">
+    <p>
+      Dutch people celebrate birthdays. You say **Congratulations (Gefeliciteerd)** to the birthday person.
+    </p>
+    <p>
+      Uniquely, you also **congratulate the partner and family** of the birthday person. You usually bring a gift.
+    </p>
+    <p>
+      When it is your own birthday, it is custom that **you treat others (trakteren)** to cake at work or school.
+    </p>
+  </EnglishColumn>
 
-    {/* Right: English Translation (Agent Translation) */}
-    <div className="space-y-4">
-      <h2>1. Visiting and Appointments</h2>
-      <p>
-        If you visit a Dutch person, you must always <strong>make an appointment (afspraak maken)</strong> first. Do not show up unannounced (niet onaangekondigd).
-      </p>
-      <p>
-        It is very important to <strong>be on time (op tijd komen)</strong>. If you are going to be late, you must call.
-      </p>
-      <p>
-        You usually get coffee or tea with a cookie. For an official <strong>appointment</strong> (e.g., at a doctor), being on time is mandatory.
-      </p>
+  {/* Section 3 */}
+  <DutchColumn title="3. Geboorte">
+    <p>
+      Als er een baby geboren is, sturen de ouders een **geboortekaartje** naar vrienden en familie.
+    </p>
+    <p>
+      Als u op **kraamvisite** gaat, moet u eerst een **afspraak maken**. Het bezoek blijft meestal niet lang.
+    </p>
+    <p>
+      De traditie is dat bezoekers **beschuit met muisjes** krijgen. De kleur van de **muisjes** is roze of blauw.
+    </p>
+  </DutchColumn>
 
-      <h2>2. Birthdays</h2>
-      <p>
-        Dutch people celebrate birthdays. You say <strong>Congratulations (Gefeliciteerd)</strong> to the birthday person.
-      </p>
-      <p>
-        Uniquely, you also <strong>congratulate the partner and family</strong> of the birthday person. You usually bring a gift.
-      </p>
-      <p>
-        When it is your own birthday, it is custom that <strong>you treat others (trakteren)</strong> to cake at work or school.
-      </p>
+  <EnglishColumn title="3. Birth Traditions">
+    <p>
+      When a baby is born, parents send a **birth card (geboortekaartje)** to friends and family.
+    </p>
+    <p>
+      If you go on a **maternity visit (kraamvisite)**, you must **make an appointment** first. These visits are usually short.
+    </p>
+    <p>
+      The tradition is that visitors are served **rusk with aniseed sprinkles (beschuit met muisjes)**. The color of the **sprinkles (muisjes)** is pink (girl) or blue (boy).
+    </p>
+  </EnglishColumn>
+</BilingualGrid>
 
-      <h2>3. Birth Traditions</h2>
-      <p>
-        When a baby is born, parents send a <strong>birth card (geboortekaartje)</strong> to friends and family.
-      </p>
-      <p>
-        If you go on a <strong>maternity visit (kraamvisite)</strong>, you must <strong>make an appointment</strong> first. These visits are usually short.
-      </p>
-      <p>
-        The tradition is that visitors are served <strong>rusk with aniseed sprinkles (beschuit met muisjes)</strong>. The color of the <strong>sprinkles (muisjes)</strong> is pink (girl) or blue (boy).
-      </p>
-    </div>
-  </div>
-
-  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
-    <h3 className="font-semibold text-slate-700">Further reading on Wikipedia</h3>
-    <ul className="list-disc list-inside space-y-1">
-      <li>
-        <a
-          href="https://en.wikipedia.org/wiki/Beschuit_met_muisjes"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Beschuit met muisjes – Wikipedia
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.expatica.com/nl/living/integration/dutch-etiquette-105168/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Dutch etiquette and social culture (Expatica)
-        </a>
-      </li>
-    </ul>
-  </div>
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> Further Reading
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://en.wikipedia.org/wiki/Beschuit_met_muisjes">
+        Beschuit met muisjes – Wikipedia
+      </SourceLink>
+    </li>
+    <li>
+      <SourceLink href="https://www.expatica.com/nl/living/integration/dutch-etiquette-105168/">
+        Dutch etiquette and social culture (Expatica)
+      </SourceLink>
+    </li>
+  </ul>
 </div>
