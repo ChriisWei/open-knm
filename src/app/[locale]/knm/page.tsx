@@ -22,7 +22,7 @@ export default async function KnmPage({
   const topicParam =
     typeof rawTopic === "string" ? rawTopic : Array.isArray(rawTopic) ? rawTopic[0] : undefined;
 
-  const topicKeys = ["history-geography", "law-government", "health-education", "work-income"] as const;
+  const topicKeys = ["history-geography", "law-government", "health-education", "work-income", "past-exam"] as const;
   type TopicKey = (typeof topicKeys)[number] | "all";
 
   const isValidTopic = (value: string | undefined): value is TopicKey =>
@@ -35,6 +35,7 @@ export default async function KnmPage({
     "law-government": ["Politics", "Law"],
     "health-education": ["Health", "Education"],
     "work-income": ["Work", "Finance"],
+    "past-exam": ["Past Exam", "Memoir"],
   };
 
   const filteredArticles =
@@ -50,6 +51,7 @@ export default async function KnmPage({
     { key: "law-government", zh: "法律与政府", en: "Law & Government" },
     { key: "health-education", zh: "医疗与教育", en: "Health & Education" },
     { key: "work-income", zh: "工作与收入", en: "Work & Income" },
+    { key: "past-exam", zh: "真题回忆", en: "Past Exam Memoir"}
   ];
 
   return (
@@ -135,7 +137,6 @@ export default async function KnmPage({
           <span aria-hidden="true">↗</span>
         </Link>
       </div>
-
       <ArticleList articles={filteredArticles} locale={locale} />
     </div>
   );
