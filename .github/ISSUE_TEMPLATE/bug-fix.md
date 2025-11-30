@@ -1,6 +1,6 @@
 ---
-name: Bug 修复
-about: 描述一个需要修复的 bug
+name: Bug 修复 / Bug Fix
+about: 描述一个需要修复的 bug / Describe a bug that needs fixing
 title: '[Bug修复]'
 labels: bug
 ---

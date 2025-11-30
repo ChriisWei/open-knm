@@ -1,6 +1,6 @@
 ---
-name: 格式校对
-about: 纠正文案、排版或样式上的小问题
+name: 格式校对 / Formatting
+about: 纠正文案、排版或样式上的小问题 / Fix copy, layout, or style issues
 title: '[格式校对]'
 labels: formatting
 ---

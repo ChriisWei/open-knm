@@ -1,6 +1,6 @@
 ---
-name: 内容勘误
-about: 报告文案或数据的错误
+name: 内容勘误 / Content Correction
+about: 报告文案或数据的错误 / Report inaccurate copy or data
 title: '[内容勘误]'
 labels: correction
 ---

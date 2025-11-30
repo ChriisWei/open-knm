@@ -1,6 +1,6 @@
 ---
-name: 内容补充
-about: 提出需要新增内容的建议
+name: 内容补充 / Content Addition
+about: 提出需要新增内容的建议 / Suggest a new piece of content
 title: '[内容补充]'
 labels: enhancement
 ---
