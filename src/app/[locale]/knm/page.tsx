@@ -62,8 +62,8 @@ export default async function KnmPage({
         </h1>
         <p className="text-lg text-slate-600 leading-relaxed">
           {isZh
-            ? "这里汇集了 Kennis van de Nederlandse Maatschappij (KNM) 考试的核心考点。从历史、地理到法律与医疗，我们用双语为你拆解每一个必考话题。橙色标记的内容尤为重要，建议优先掌握。"
-            : "The core topics for the Kennis van de Nederlandse Maatschappij (KNM) exam. From history and geography to law and healthcare, we explain every essential topic bilingually. Orange highlights mark especially important content to prioritize."}
+            ? "这里汇集了 Kennis van de Nederlandse Maatschappij (KNM) 考试的核心考点。从历史、地理到法律与医疗，我们用双语为你拆解每一个必考话题。"
+            : "The core topics for the Kennis van de Nederlandse Maatschappij (KNM) exam. From history and geography to law and healthcare, we explain every essential topic bilingually. "}
         </p>
       </div>
 
