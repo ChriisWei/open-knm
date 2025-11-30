@@ -102,3 +102,17 @@ You can contribute in several ways:
 
 Please be kind and respectful. We aim to create an inclusive and helpful community environment.
 
+---
+
+### PR 要求 / PR Expectations
+
+- **改动说明、原因、效果**：请在 PR 描述中简要说明改动内容、为什么要做、实际的效果（必要时附上截图）。  
+  Describe what you changed, why you did it, and what impact it has (screenshots/GIFs welcome when helpful).
+- **仅选一个改动类型**：我们在 `.github/PULL_REQUEST_TEMPLATE.md` 中提供了 Bug 修复、内容补充、内容勘误、格式校对四类；请选择其中一个并写清原因。  
+  Pick exactly one change type (Bug Fix / Content Addition / Content Correction / Formatting) from the PR template and explain why it fits.
+- **坚持单一责任**：一个 PR 尽量只聚焦一类改动，避免混搭多个大类内容，以便 review。  
+  Follow the single-responsibility principle: keep one PR focused on a single kind of change.
+
+请同时使用现有的 issue 模板（bug、补充、勘误、校对或 feature request）来报告具体问题或提案。  
+Use the issue templates (bug, content addition, content correction, formatting, or the new feature request) when opening issues.
+
