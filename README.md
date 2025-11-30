@@ -6,7 +6,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-[![Discord](https://img.shields.io/discord/131182024512345678?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/9SaFjrhN)
+[![Discord](https://img.shields.io/discord/1443916344876859455?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/KXfHMHMw)
 
 **[中文]** | [English](#english)
 
@@ -50,6 +50,12 @@
 我们非常欢迎任何形式的贡献！无论是修正错别字、翻译内容，还是分享你在荷兰生活的真实经验。
 请阅读 [贡献指南 (CONTRIBUTING.md)](./CONTRIBUTING.md) 了解更多细节。
 
+### 贡献者
+
+感谢每一位通过 Issue、PR 或分享经验支持 Open KNM 的朋友！
+
+[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
+
 ---
 
 <a id="english"></a>
@@ -91,6 +97,12 @@ Our goal is to provide clear, accurate, and accessible information for all newco
 
 We welcome contributions of any kind! Whether it's fixing typos, translating content, or sharing your real-life experiences in the Netherlands.
 Please read our [Contribution Guide (CONTRIBUTING.md)](./CONTRIBUTING.md) for more details.
+
+### Contributors
+
+Big thanks to everyone who has supported Open KNM through issues, PRs, and shared knowledge!
+
+[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
 
 ## License
 
