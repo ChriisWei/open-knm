@@ -52,6 +52,9 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         <p className="text-lg text-slate-600 leading-relaxed">
           {texts.description}
         </p>
+        <div className="text-sm text-slate-400 bg-amber-50 border border-amber-100 rounded-lg px-4 py-2 inline-block">
+          💡 {locale === 'zh' ? '听不到声音？请检查手机静音开关是否关闭。' : 'No sound? Check if your phone is in silent mode.'}
+        </div>
       </div>
 
       {/* Category Filter */}
@@ -155,15 +158,38 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
 
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
 
+    // Cancel any ongoing speech
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(item.dutch);
+    
+    // Try to find a Dutch voice specifically
+    const voices = window.speechSynthesis.getVoices();
+    const dutchVoice = voices.find(v => v.lang.includes('nl'));
+    if (dutchVoice) {
+      utterance.voice = dutchVoice;
+    }
+    
     utterance.lang = 'nl-NL';
     utterance.rate = 0.9;
 
+    // Important: Fix for iOS/Safari garbage collection issue
+    // We attach the utterance to the window object to prevent it from being garbage collected
+    // before the onend event fires.
+    // @ts-expect-error - attaching to window to prevent GC
+    window.currentUtterance = utterance;
+
     utterance.onstart = () => setIsPlaying(true);
-    utterance.onend = () => setIsPlaying(false);
-    utterance.onerror = () => setIsPlaying(false);
+    utterance.onend = () => {
+      setIsPlaying(false);
+      // @ts-expect-error - cleanup
+      delete window.currentUtterance;
+    };
+    utterance.onerror = () => {
+      setIsPlaying(false);
+      // @ts-expect-error - cleanup
+      delete window.currentUtterance;
+    };
 
     window.speechSynthesis.speak(utterance);
   };
