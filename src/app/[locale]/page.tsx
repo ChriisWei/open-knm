@@ -28,14 +28,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           
           <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
             {isZh 
-              ? '你的荷兰融入考试（Inburgering）终极指南。' 
-              : 'Your ultimate guide to the Dutch Civic Integration exam.'}
+              ? '你的荷兰融入考试 (Inburgering) 通关指南。' 
+              : 'Your essential guide to the Dutch Civic Integration exam.'}
           </p>
           
           <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
             {isZh 
-              ? '这是一个免费开源的项目，旨在帮助你深入了解荷兰这个国家，同时也为你准备 KNM (Kennis van de Nederlandse Maatschappij) 考试提供最佳辅助。' 
-              : 'A free and open-source project designed to help you understand the Netherlands, while providing the best preparation for your KNM exam.'}
+              ? '这是一个免费开源的项目。不仅为你梳理 KNM 考试核心考点，更助你真正读懂荷兰社会规则，让备考与生活都更从容。' 
+              : 'An open-source knowledge base designed to help you navigate Dutch society. We provide the key insights you need to pass the KNM exam and settle in with confidence.'}
           </p>
 
           <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">
