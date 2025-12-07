@@ -7,20 +7,20 @@ import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 type ViewMode = 'card' | 'list';
 
 // Custom hook for audio playback
-function useAudio(text: string, isMobile: boolean) {
+function useAudio(text: string) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const play = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    if (isMobile) return;
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
 
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
     const voices = window.speechSynthesis.getVoices();
+    // Try to find a Dutch voice
     const dutchVoice = voices.find(v => v.lang.includes('nl'));
     if (dutchVoice) {
       utterance.voice = dutchVoice;
@@ -55,22 +55,9 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const [isMobile, setIsMobile] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>('card');
 
   const itemsPerPage = viewMode === 'card' ? 6 : 50;
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      const isMobileView = window.innerWidth < 768;
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      setIsMobile(isMobileView || isMobileDevice);
-    };
-    
-    checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    return () => window.removeEventListener('resize', checkIsMobile);
-  }, []);
 
   const categories = [
     { id: "all", label: texts.categories.all },
@@ -117,11 +104,6 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         <p className="text-lg text-slate-600 leading-relaxed">
           {texts.description}
         </p>
-        {isMobile && (
-          <div className="text-sm text-slate-400 bg-amber-50 border border-amber-100 rounded-lg px-4 py-2 inline-block">
-            💡 {locale === 'zh' ? '手机端暂时不支持发音，想听发音请桌面端访问。' : 'Mobile audio is currently not supported. Please use desktop to listen.'}
-          </div>
-        )}
       </div>
 
       {/* Controls Section */}
@@ -178,13 +160,13 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
       {viewMode === 'card' ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleItems.map((item) => (
-            <VocabularyCard key={item.id} item={item} locale={locale} isMobile={isMobile} />
+            <VocabularyCard key={item.id} item={item} locale={locale} />
           ))}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleItems.map((item, index) => (
-            <VocabularyListItem key={item.id} item={item} locale={locale} isMobile={isMobile} index={index} />
+            <VocabularyListItem key={item.id} item={item} locale={locale} index={index} />
           ))}
         </div>
       )}
@@ -256,9 +238,9 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   );
 }
 
-function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; locale: Locale; isMobile: boolean }) {
+function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale }) {
   const isZh = locale === 'zh';
-  const { isPlaying, play } = useAudio(item.dutch, isMobile);
+  const { isPlaying, play } = useAudio(item.dutch);
   
   return (
     <div className="group relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
@@ -281,14 +263,9 @@ function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; loca
           </h3>
           <button
             onClick={play}
-            disabled={isPlaying || isMobile}
-            aria-label={isMobile ? "Audio not available on mobile" : "Play pronunciation"}
-            title={isMobile ? (isZh ? "手机端暂不支持发音" : "Audio not available on mobile") : ""}
-            className={`p-2 rounded-full transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 
-              ${isMobile 
-                ? "text-slate-200 cursor-not-allowed opacity-50" 
-                : "text-slate-400 hover:text-[var(--primary)] hover:bg-orange-50 disabled:opacity-50"
-              }`}
+            disabled={isPlaying}
+            aria-label="Play pronunciation"
+            className="p-2 rounded-full transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:ring-offset-2 text-slate-400 hover:text-[var(--primary)] hover:bg-orange-50 disabled:opacity-50"
           >
             {isPlaying ? (
               <span className="flex space-x-1 h-4 items-center">
@@ -321,9 +298,9 @@ function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; loca
   );
 }
 
-function VocabularyListItem({ item, locale, isMobile, index }: { item: VocabularyItem; locale: Locale; isMobile: boolean; index: number }) {
+function VocabularyListItem({ item, locale, index }: { item: VocabularyItem; locale: Locale; index: number }) {
   const isZh = locale === 'zh';
-  const { isPlaying, play } = useAudio(item.dutch, isMobile);
+  const { isPlaying, play } = useAudio(item.dutch);
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -357,12 +334,8 @@ function VocabularyListItem({ item, locale, isMobile, index }: { item: Vocabular
           </span>
           <button
             onClick={play}
-            disabled={isPlaying || isMobile}
-            className={`p-1.5 rounded-full transition-all active:scale-95 hover:bg-orange-50
-              ${isMobile 
-                ? "text-slate-200 cursor-not-allowed" 
-                : "text-slate-400 hover:text-[var(--primary)]"
-              }`}
+            disabled={isPlaying}
+            className="p-1.5 rounded-full transition-all active:scale-95 hover:bg-orange-50 text-slate-400 hover:text-[var(--primary)]"
           >
              {isPlaying ? (
               <span className="flex space-x-0.5 h-3 items-center px-0.5">
