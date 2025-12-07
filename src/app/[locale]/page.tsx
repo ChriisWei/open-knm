@@ -54,7 +54,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           </div>
         </section>
 
-        {/* Right: KNM Topics Grid (Compact) */}
+        {/* Right: Feature Cards */}
         <section className="flex-1 w-full max-w-md lg:max-w-lg">
           <div className="grid gap-4">
              {/* AI Assistant Promo Card */}
@@ -84,7 +84,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                 </div>
              </Link>
 
-             {/* Vocabulary Promo Card (New) */}
+             {/* Vocabulary Promo Card */}
              <Link
                href={`/${locale}/vocabulary`}
                className="group flex items-center p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
@@ -106,75 +106,42 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                 </div>
              </Link>
 
-             {/* Card 1: History & Geography */}
+             {/* Speaking Promo Card */}
              <Link
-               href={`/${locale}/knm?topic=history-geography`}
-               className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+               href={`/${locale}/speaking`}
+               className="group flex items-center p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
-                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">🇳🇱</div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 truncate">
-                    {isZh ? '荷兰历史与地理' : 'History & Geography'}
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-blue-100 shadow-sm">
+                  🗣️
+                </div>
+                <div className="flex-1 min-w-0 relative z-10">
+                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
+                    {isZh ? 'A2 口语模拟' : 'Speaking Practice'}
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wide">Beta</span>
                   </h3>
-                  <p className="text-slate-500 text-sm truncate">
-                    {isZh ? '威廉奥兰治、二战、地理常识。' : 'William of Orange, WWII, geography.'}
+                  <p className="text-slate-600 text-sm truncate">
+                    {isZh ? '实时语音反馈，模拟真实考试场景。' : 'Interactive practice with real-time feedback.'}
                   </p>
                 </div>
-                <div className="ml-3">
-                  <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
+                <div className="ml-3 relative z-10">
+                  <span className="text-blue-600 group-hover:text-blue-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
 
-             {/* Card 2: Law & Government */}
+             {/* Unified KNM Card */}
              <Link
-               href={`/${locale}/knm?topic=law-government`}
+               href={`/${locale}/knm`}
                className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
              >
-                <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">⚖️</div>
+                <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">
+                  🇳🇱
+                </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-bold text-slate-900 truncate">
-                    {isZh ? '法律与政府' : 'Law & Government'}
+                    {isZh ? 'KNM 知识考点' : 'Knowledge of Dutch Society'}
                   </h3>
                   <p className="text-slate-500 text-sm truncate">
-                    {isZh ? '民主制度、宪法权利、首相与国王。' : 'Democracy, rights, PM & King.'}
-                  </p>
-                </div>
-                <div className="ml-3">
-                  <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
-                </div>
-             </Link>
-
-             {/* Card 3: Health & Education */}
-             <Link
-               href={`/${locale}/knm?topic=health-education`}
-               className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
-             >
-                <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">🏥</div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 truncate">
-                    {isZh ? '医疗与教育' : 'Health & Education'}
-                  </h3>
-                  <p className="text-slate-500 text-sm truncate">
-                    {isZh ? '家庭医生、学校类型与保险体系。' : 'GP system, schools, insurance.'}
-                  </p>
-                </div>
-                <div className="ml-3">
-                  <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
-                </div>
-             </Link>
-
-             {/* Card 4: Work & Income */}
-             <Link
-               href={`/${locale}/knm?topic=work-income`}
-               className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
-             >
-                <div className="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">💼</div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 truncate">
-                    {isZh ? '工作与收入' : 'Work & Income'}
-                  </h3>
-                  <p className="text-slate-500 text-sm truncate">
-                    {isZh ? '合同、解雇保护、福利与税务。' : 'Contracts, dismissal, benefits & taxes.'}
+                    {isZh ? '历史、法律、医疗、工作全覆盖。' : 'History, Law, Health, Work & Regulations.'}
                   </p>
                 </div>
                 <div className="ml-3">
