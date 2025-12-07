@@ -629,12 +629,12 @@ export const speakingQuestions: SpeakingQuestion[] = [
     image: "/images/speaking/supermarket.png",
     question: {
       nl: "Wat doet de vrouw?",
-      zh: "这个女人在做什么？",
+      zh: "这位女士在做什么？",
       en: "What is the woman doing?",
     },
     answer: {
       nl: "De vrouw is in de supermarkt. Ze koopt appels en groenten.",
-      zh: "这个女人在超市。她在买苹果和蔬菜。",
+      zh: "这位女士在超市。她在买苹果和蔬菜。",
       en: "The woman is in the supermarket. She is buying apples and vegetables.",
     },
     tip: {
@@ -692,12 +692,12 @@ export const speakingQuestions: SpeakingQuestion[] = [
     image: "/images/speaking/bus stop.png",
     question: {
       nl: "Wat doet de man?",
-      zh: "这个男人在做什么？",
+      zh: "这位男士在做什么？",
       en: "What is the man doing?",
     },
     answer: {
       nl: "De man werkt op kantoor. Hij zit achter de computer en hij typt een e-mail.",
-      zh: "这个男人在办公室工作。他坐在电脑后面，正在写邮件。",
+      zh: "这位男士在办公室工作。他坐在电脑后面，正在写邮件。",
       en: "The man is working at the office. He is sitting at the computer and typing an email.",
     },
     tip: {
