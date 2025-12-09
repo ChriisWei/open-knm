@@ -1,12 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useWebSpeech } from "@/hooks/useWebSpeech";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import {
   examOverviewCards,
-  heroStats,
   speakingCopy,
   speakingQuestions,
   speakingThemes,
@@ -210,12 +208,11 @@ export function SpeakingContent({ locale }: Props) {
     (questionPage + 1) * QUESTIONS_PER_PAGE
   );
   
-  const activeTheme = speakingThemes.find((theme) => theme.id === activeTopic) ?? speakingThemes[0];
   const isWideLayout = ["type3_comparison", "type4_story"].includes(activeTopic);
 
   // Reset page when topic changes
   const handleTopicChange = (topicId: string) => {
-    setActiveTopic(topicId as any);
+    setActiveTopic(topicId as SpeakingTheme["id"]);
     setQuestionPage(0);
   };
 
