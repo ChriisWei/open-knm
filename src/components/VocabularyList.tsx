@@ -56,6 +56,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<ViewMode>('card');
+  const [hideTranslations, setHideTranslations] = useState(false);
 
   const itemsPerPage = viewMode === 'card' ? 6 : 50;
 
@@ -154,6 +155,27 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
             {texts.viewMode.list}
           </button>
         </div>
+
+        {/* Hide translations toggle (only for list mode) */}
+        {viewMode === 'list' && (
+          <button
+            onClick={() => setHideTranslations((v) => !v)}
+            className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium border transition-colors ${
+              hideTranslations
+                ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
+                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
+            }`}
+          >
+            <span className="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-200">
+              <span
+                className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 ${
+                  hideTranslations ? "translate-x-4" : "translate-x-1"
+                }`}
+              />
+            </span>
+            {hideTranslations ? texts.showTranslations : texts.hideTranslations}
+          </button>
+        )}
       </div>
 
       {/* Content Area */}
@@ -166,7 +188,13 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleItems.map((item, index) => (
-            <VocabularyListItem key={item.id} item={item} locale={locale} index={index} />
+            <VocabularyListItem
+              key={item.id}
+              item={item}
+              locale={locale}
+              index={index}
+              hideTranslations={hideTranslations}
+            />
           ))}
         </div>
       )}
@@ -298,7 +326,16 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
   );
 }
 
-function VocabularyListItem({ item, locale }: { item: VocabularyItem; locale: Locale; index: number }) {
+function VocabularyListItem({
+  item,
+  locale,
+  hideTranslations,
+}: {
+  item: VocabularyItem;
+  locale: Locale;
+  index: number;
+  hideTranslations: boolean;
+}) {
   const isZh = locale === 'zh';
   const { isPlaying, play } = useAudio(item.dutch);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -321,7 +358,11 @@ function VocabularyListItem({ item, locale }: { item: VocabularyItem; locale: Lo
               <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>
                 {item.dutch}
               </h3>
-              <span className="text-slate-500 text-sm truncate">
+              <span
+                className={`text-slate-500 text-sm truncate transition-opacity ${
+                  hideTranslations && !isExpanded ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'
+                }`}
+              >
                 {item.translations[locale]}
               </span>
             </div>
