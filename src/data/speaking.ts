@@ -350,6 +350,10 @@ export const universalPhrases: UniversalPhraseGroup[] = [
         translation: { nl: "", zh: "我更喜欢...", en: "I prefer ..." },
       },
       {
+        dutch: "Daarom vindt ik het beter.",
+        translation: { nl: "", zh: "所以我更喜欢它。", en: "So I prefer it. " },
+      },
+      {
         dutch: "Dat vind ik belangrijk.",
         translation: { nl: "", zh: "我觉得那很重要。", en: "I think that is important." },
       },
@@ -366,11 +370,11 @@ export const universalPhrases: UniversalPhraseGroup[] = [
         translation: { nl: "", zh: "我不喜欢...", en: "I don't like ..." },
       },
       {
-        dutch: "Het rechterplaatje is mooier.",
+        dutch: "Het rechter plaatje is mooier.",
         translation: { nl: "", zh: "右边的图片更漂亮。", en: "The right picture is prettier." },
       },
       {
-        dutch: "Het linkerplaatje is drukker.",
+        dutch: "Het linker plaatje is drukker.",
         translation: { nl: "", zh: "左边的图片更拥挤/忙碌。", en: "The left picture is busier." },
       },
       {
@@ -801,7 +805,7 @@ export const speakingQuestions: SpeakingQuestion[] = [
       en: "In which school would you rather have lessons? And why?",
     },
     answer: {
-      nl: "Ik heb liever les in de rechterschool, want die vind ik mooier.",
+      nl: "Ik heb liever les in de rechter school, want dat is mooier.",
       zh: "我更喜欢在右边的学校上课，因为我觉得它更漂亮。",
       en: "I prefer having lessons in the school on the right, because I think it is prettier.",
     },
@@ -828,7 +832,7 @@ export const speakingQuestions: SpeakingQuestion[] = [
       en: "Where do you prefer to live? And why?",
     },
     answer: {
-      nl: "Ik woon liever in het rechterhuis, want dat vind ik mooier.",
+      nl: "Ik woon liever in het rechter huis, want dat vind ik mooier.",
       zh: "我更喜欢住在右边的房子里，因为我觉得它更漂亮。",
       en: "I prefer living in the house on the right, because I think it is prettier.",
     },
