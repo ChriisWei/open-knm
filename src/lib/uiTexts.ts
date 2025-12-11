@@ -65,6 +65,8 @@ export type UiTexts = {
       card: string;
       list: string;
     };
+    hideTranslations: string;
+    showTranslations: string;
   };
   disclaimer: {
     title: string;
