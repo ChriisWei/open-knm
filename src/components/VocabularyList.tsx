@@ -126,56 +126,63 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
           ))}
         </div>
 
-        {/* View Mode Switcher */}
-        <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center shadow-inner">
+        {/* View Options Bar */}
+        <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center shadow-inner gap-1">
           <button
             onClick={() => handleViewModeChange('card')}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
               viewMode === 'card'
                 ? "bg-white text-[var(--primary)] shadow-sm"
-                : "text-slate-500 hover:text-slate-700"
+                : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
             </svg>
-            {texts.viewMode.card}
+            <span className="hidden sm:inline">{texts.viewMode.card}</span>
           </button>
           <button
             onClick={() => handleViewModeChange('list')}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
               viewMode === 'list'
                 ? "bg-white text-[var(--primary)] shadow-sm"
-                : "text-slate-500 hover:text-slate-700"
+                : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
             }`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            {texts.viewMode.list}
+            <span className="hidden sm:inline">{texts.viewMode.list}</span>
           </button>
-        </div>
 
-        {/* Hide translations toggle (only for list mode) */}
-        {viewMode === 'list' && (
-          <button
-            onClick={() => setHideTranslations((v) => !v)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium border transition-colors ${
-              hideTranslations
-                ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                : "bg-white text-slate-600 border-slate-200 hover:border-slate-300"
-            }`}
-          >
-            <span className="relative inline-flex h-5 w-9 items-center rounded-full bg-slate-200">
-              <span
-                className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform duration-200 ${
-                  hideTranslations ? "translate-x-4" : "translate-x-1"
+          {/* Divider and Hide Option (List Mode Only) */}
+          {viewMode === 'list' && (
+            <>
+              <div className="w-px h-5 bg-slate-300 mx-1" />
+              <button
+                onClick={() => setHideTranslations((v) => !v)}
+                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  hideTranslations
+                    ? "bg-white text-[var(--primary)] shadow-sm"
+                    : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
                 }`}
-              />
-            </span>
-            {hideTranslations ? texts.showTranslations : texts.hideTranslations}
-          </button>
-        )}
+                title={hideTranslations ? texts.showTranslations : texts.hideTranslations}
+              >
+                {hideTranslations ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                  </svg>
+                )}
+                <span>{hideTranslations ? texts.showTranslations : texts.hideTranslations}</span>
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Content Area */}
