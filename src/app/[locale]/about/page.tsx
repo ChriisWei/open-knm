@@ -97,6 +97,33 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
       </section>
 
+      {/* Editorial Policy & Disclaimer (Added for EEAT) */}
+      <section className="space-y-6 pt-4">
+        <div className="bg-amber-50 rounded-2xl p-8 border border-amber-100 text-amber-900/80">
+          <h3 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
+            <span>🛡️</span> {isZh ? "编辑原则与免责声明" : "Editorial Policy & Disclaimer"}
+          </h3>
+          <div className="space-y-4 text-sm leading-relaxed">
+            <p>
+              {isZh 
+                ? "Open KNM 的内容基于荷兰移民归化局 (IND)、荷兰税务局 (Belastingdienst) 和荷兰政府 (Rijksoverheid) 的官方公开信息整理而成。我们会尽力保持内容的准确性和时效性，但请注意："
+                : "Open KNM content is curated from official public information provided by the IND, Belastingdienst, and Rijksoverheid. While we strive for accuracy and currency, please note:"}
+            </p>
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                <strong>{isZh ? "非官方建议" : "Not Official Advice"}:</strong> {isZh ? "本站内容仅供学习参考，不构成法律或官方建议。" : "This site is for educational purposes only and does not constitute legal or official advice."}
+              </li>
+              <li>
+                <strong>{isZh ? "官方为准" : "Official Sources First"}:</strong> {isZh ? "移民政策和法律法规可能随时变动，由于个人维护的局限性，本站内容可能存在滞后。在做重要决定前，请务必查阅官方渠道。" : "Immigration policies and laws change. Due to the nature of community maintenance, content may lag behind. Always verify with official sources before making decisions."}
+              </li>
+              <li>
+                <strong>{isZh ? "无利益相关" : "Independence"}:</strong> {isZh ? "本项目是一个独立的开源项目，与 IND 或荷兰政府没有任何隶属关系。" : "This is an independent open-source project and is not affiliated with the IND or the Dutch government."}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* Contributors Section */}
       <section className="space-y-8 pt-8">
         <div className="relative overflow-hidden rounded-3xl bg-slate-900 p-8 sm:p-12 text-center shadow-xl">

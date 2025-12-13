@@ -181,6 +181,12 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
             <Link
+              href={getLocalizedPath(locale, "/privacy")}
+              className="text-slate-500 hover:text-[var(--primary)] transition-colors"
+            >
+              {locale === "zh" ? "隐私政策" : "Privacy Policy"}
+            </Link>
+            <Link
               href="https://discord.gg/9SaFjrhN"
               target="_blank"
               className="flex items-center gap-2 text-slate-500 hover:text-[#5865F2] transition-colors"
