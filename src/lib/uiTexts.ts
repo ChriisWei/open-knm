@@ -7,10 +7,8 @@ export function isLocale(value: unknown): value is Locale {
 }
 
 export type NavTexts = {
-  society: string;
   life: string;
   knm: string;
-  resources: string;
   assistant: string;
   vocabulary: string;
   speaking: string;
@@ -87,10 +85,8 @@ export type UiTexts = {
 export const uiTexts: Record<Locale, UiTexts> = {
   zh: {
     nav: {
-      society: "荷兰社会",
       life: "实用资源",
       knm: "KNM 专区",
-      resources: "资源",
       assistant: "AI 助教",
       vocabulary: "高频词汇",
       speaking: "口语练习",
@@ -162,10 +158,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
   },
   en: {
     nav: {
-      society: "Dutch Society",
       life: "Useful Resources",
       knm: "KNM Zone",
-      resources: "Resources",
       assistant: "AI Assistant",
       vocabulary: "Vocabulary",
       speaking: "Speaking",

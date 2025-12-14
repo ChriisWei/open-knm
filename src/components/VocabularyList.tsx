@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 import { TTSDisclaimer } from "@/components/TTSDisclaimer";
@@ -10,49 +10,118 @@ type ViewMode = 'card' | 'list';
 // Custom hook for audio playback
 function useAudio(text: string) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const voicesHandlerRef = useRef<(() => void) | null>(null);
+  const voiceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isPendingRef = useRef(false);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        if (voicesHandlerRef.current) {
+          window.speechSynthesis.removeEventListener('voiceschanged', voicesHandlerRef.current);
+        }
+        if (voiceTimeoutRef.current) {
+          clearTimeout(voiceTimeoutRef.current);
+        }
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   const play = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    if (isPlaying || isPendingRef.current) return;
 
+    isPendingRef.current = true;
     window.speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    const voices = window.speechSynthesis.getVoices();
-    // Try to find a Dutch voice
-    // Explicitly try to find a voice for the requested language
-    // This ensures we get a Dutch voice instead of the system default (which might be English)
-    const lang = 'nl-NL';
-    const dutchVoice = 
-      voices.find(v => v.lang === lang) || 
-      voices.find(v => v.lang.startsWith(lang.split('-')[0])) ||
-      voices.find(v => v.lang.includes('nl')); // Fallback to any Dutch voice
-      
-    if (dutchVoice) {
-      utterance.voice = dutchVoice;
+    // Clear any pending listeners/timeouts
+    if (voicesHandlerRef.current) {
+      window.speechSynthesis.removeEventListener('voiceschanged', voicesHandlerRef.current);
+      voicesHandlerRef.current = null;
     }
-    
-    utterance.lang = lang;
-    utterance.rate = 0.9;
+    if (voiceTimeoutRef.current) {
+      clearTimeout(voiceTimeoutRef.current);
+      voiceTimeoutRef.current = null;
+    }
 
-    // @ts-expect-error - attaching to window to prevent GC
-    window.currentUtterance = utterance;
+    const runSpeak = (voices: SpeechSynthesisVoice[]) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      // Try to find a Dutch voice
+      // Explicitly try to find a voice for the requested language
+      // This ensures we get a Dutch voice instead of the system default (which might be English)
+      const lang = 'nl-NL';
+      const dutchVoice = 
+        voices.find(v => v.lang === lang) || 
+        voices.find(v => v.lang.startsWith(lang.split('-')[0])) ||
+        voices.find(v => v.lang.includes('nl')); // Fallback to any Dutch voice
+        
+      if (dutchVoice) {
+        utterance.voice = dutchVoice;
+      }
+      
+      utterance.lang = lang;
+      utterance.rate = 0.9;
 
-    utterance.onstart = () => setIsPlaying(true);
-    utterance.onend = () => {
-      setIsPlaying(false);
-      // @ts-expect-error - cleanup
-      delete window.currentUtterance;
+      // @ts-expect-error - attaching to window to prevent GC
+      window.currentUtterance = utterance;
+
+      utterance.onstart = () => {
+        setIsPlaying(true);
+        isPendingRef.current = false;
+      };
+      utterance.onend = () => {
+        setIsPlaying(false);
+        isPendingRef.current = false;
+        // @ts-expect-error - cleanup
+        delete window.currentUtterance;
+      };
+      utterance.onerror = () => {
+        setIsPlaying(false);
+        isPendingRef.current = false;
+        // @ts-expect-error - cleanup
+        delete window.currentUtterance;
+      };
+
+      try {
+        window.speechSynthesis.speak(utterance);
+      } catch (error) {
+        console.error("Speech synthesis failed:", error);
+        isPendingRef.current = false;
+      }
     };
-    utterance.onerror = () => {
-      setIsPlaying(false);
-      // @ts-expect-error - cleanup
-      delete window.currentUtterance;
-    };
 
-    window.speechSynthesis.speak(utterance);
+    const voices = window.speechSynthesis.getVoices();
+    if (voices.length > 0) {
+      runSpeak(voices);
+    } else {
+      const handleVoicesChanged = () => {
+        const updatedVoices = window.speechSynthesis.getVoices();
+        if (updatedVoices.length > 0) {
+          if (voiceTimeoutRef.current) {
+            clearTimeout(voiceTimeoutRef.current);
+            voiceTimeoutRef.current = null;
+          }
+          window.speechSynthesis.removeEventListener('voiceschanged', handleVoicesChanged);
+          voicesHandlerRef.current = null;
+          runSpeak(updatedVoices);
+        }
+      };
+
+      voicesHandlerRef.current = handleVoicesChanged;
+      window.speechSynthesis.addEventListener('voiceschanged', handleVoicesChanged);
+
+      voiceTimeoutRef.current = setTimeout(() => {
+        if (voicesHandlerRef.current) {
+          window.speechSynthesis.removeEventListener('voiceschanged', voicesHandlerRef.current);
+          voicesHandlerRef.current = null;
+          runSpeak([]);
+        }
+      }, 3000);
+    }
   };
 
   return { isPlaying, play };
