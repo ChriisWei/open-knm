@@ -59,6 +59,8 @@ export function useWebSpeech() {
 
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
+  const voicesHandlerRef = useRef<(() => void) | null>(null);
+  const voiceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -82,6 +84,20 @@ export function useWebSpeech() {
         }, 0);
       }
     }
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        if (voicesHandlerRef.current) {
+          window.speechSynthesis.removeEventListener('voiceschanged', voicesHandlerRef.current);
+        }
+        if (voiceTimeoutRef.current) {
+          clearTimeout(voiceTimeoutRef.current);
+        }
+        window.speechSynthesis.cancel();
+      }
+      if (recognitionRef.current) {
+        recognitionRef.current.stop();
+      }
+    };
   }, []);
 
   const speak = useCallback((text: string, rate: number = 0.85, lang: string = 'nl-NL') => {
@@ -89,22 +105,62 @@ export function useWebSpeech() {
       // Cancel any ongoing speech
       synthesisRef.current.cancel();
 
-      const utterance = new SpeechSynthesisUtterance(text);
-      
-      // Explicitly try to find a voice for the requested language
-      // This ensures we get a Dutch voice instead of the system default (which might be English)
-      const voices = synthesisRef.current.getVoices();
-      const targetVoice = 
-        voices.find(v => v.lang === lang) || 
-        voices.find(v => v.lang.startsWith(lang.split('-')[0]));
-      
-      if (targetVoice) {
-        utterance.voice = targetVoice;
+      // Clear any pending voice loading listeners from previous calls
+      if (voicesHandlerRef.current) {
+        synthesisRef.current.removeEventListener('voiceschanged', voicesHandlerRef.current);
+        voicesHandlerRef.current = null;
+      }
+      if (voiceTimeoutRef.current) {
+        clearTimeout(voiceTimeoutRef.current);
+        voiceTimeoutRef.current = null;
       }
 
-      utterance.lang = lang;
-      utterance.rate = rate; // Use the provided rate
-      synthesisRef.current.speak(utterance);
+      const speakWithVoices = (voices: SpeechSynthesisVoice[]) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        // Explicitly try to find a voice for the requested language
+        // This ensures we get a Dutch voice instead of the system default (which might be English)
+        const targetVoice = 
+          voices.find(v => v.lang === lang) || 
+          voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+        
+        if (targetVoice) {
+          utterance.voice = targetVoice;
+        }
+
+        utterance.lang = lang;
+        utterance.rate = rate; // Use the provided rate
+        synthesisRef.current?.speak(utterance);
+      };
+
+      const voices = synthesisRef.current.getVoices();
+      if (voices.length > 0) {
+        speakWithVoices(voices);
+      } else {
+        const handleVoicesChanged = () => {
+          const updatedVoices = synthesisRef.current?.getVoices() || [];
+          if (updatedVoices.length > 0) {
+            if (voiceTimeoutRef.current) {
+              clearTimeout(voiceTimeoutRef.current);
+              voiceTimeoutRef.current = null;
+            }
+            synthesisRef.current?.removeEventListener('voiceschanged', handleVoicesChanged);
+            voicesHandlerRef.current = null;
+            speakWithVoices(updatedVoices);
+          }
+        };
+        
+        voicesHandlerRef.current = handleVoicesChanged;
+        synthesisRef.current.addEventListener('voiceschanged', handleVoicesChanged);
+
+        voiceTimeoutRef.current = setTimeout(() => {
+            if (voicesHandlerRef.current) {
+              synthesisRef.current?.removeEventListener('voiceschanged', voicesHandlerRef.current);
+              voicesHandlerRef.current = null;
+              speakWithVoices([]);
+            }
+        }, 3000);
+      }
     }
   }, []);
 

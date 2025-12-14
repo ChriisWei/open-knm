@@ -23,9 +23,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
     { href: getLocalizedPath(locale, "/vocabulary"), label: texts.nav.vocabulary },
     { href: getLocalizedPath(locale, "/speaking"), label: texts.nav.speaking },
     { href: getLocalizedPath(locale, "/writing"), label: texts.nav.writing },
-    // { href: getLocalizedPath(locale, "/society"), label: texts.nav.society }, // Temporarily removed
     { href: getLocalizedPath(locale, "/life"), label: texts.nav.life },
-    // { href: getLocalizedPath(locale, "/resources"), label: texts.nav.resources },
     { href: getLocalizedPath(locale, "/about"), label: texts.nav.about, isAccent: true },
   ];
 
